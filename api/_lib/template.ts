@@ -45,6 +45,10 @@ function getCss(fontSize: string) {
         justify-content: center;
     }
 
+    body.none {
+        background-color: #ffffff;
+    }
+
     body.cross {
         background-color: #ffffff;
         background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#dbdbdb 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #dbdbdb 2px, #ffffff 2px) -1px 0;

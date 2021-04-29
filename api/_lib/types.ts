@@ -1,5 +1,5 @@
 export type FileType = 'png' | 'jpeg';
-export type Pattern = 'cross' | 'polka';
+export type Pattern = 'none' | 'cross' | 'polka';
 
 export interface ParsedRequest {
     fileType: FileType;
