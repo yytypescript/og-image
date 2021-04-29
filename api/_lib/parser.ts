@@ -29,7 +29,7 @@ export function parseRequest(req: IncomingMessage) {
     const parsedRequest: ParsedRequest = {
         fileType: extension === 'jpeg' ? extension : 'png',
         text: decodeURIComponent(text),
-        pattern: ['cross', 'polka'].includes(pattern) ? pattern as Pattern : 'cross',
+        pattern: ['cross', 'polka'].includes(pattern || 'cross') ? pattern as Pattern : 'cross',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
     };
