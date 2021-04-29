@@ -112,6 +112,7 @@ const Toast = ({ show, message }: ToastProps) => {
 }
 
 const patternOptions: DropdownOption[] = [
+    { text: 'None', value: 'none' },
     { text: 'Cross', value: 'cross' },
     { text: 'Polka', value: 'polka' },
 ];
