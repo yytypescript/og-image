@@ -85,8 +85,34 @@ function getCss(fontSize: string) {
         justify-items: center;
     }
 
+    .icon{
+        display: block;
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        top: 36px;
+        left: 0;
+        right: 0;
+        margin:  auto;
+      }
+      
     .logo {
-        margin: 0 75px;
+        display: block;
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        bottom: 36px;
+        left: 0;
+        right: 0;
+        margin:  auto;
+    }
+
+    .overlay {
+        display: block;
+        position: absolute;
+        width: 1200px;
+        height: 630px;
+        margin:  auto;
     }
 
     .plus {
