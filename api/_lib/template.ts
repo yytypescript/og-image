@@ -141,8 +141,9 @@ function getCss(fontSize: string) {
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: black;
-        line-height: 1.8;
+        line-height: 1.4;
         position: absolute;
+        display: flex;
         width: 938px;
         height: 600px;
         top: 0;
@@ -150,9 +151,8 @@ function getCss(fontSize: string) {
         left: 0;
         right: 0;
         margin: auto;
-        display: flex;
+        justify-content: center;
         align-items: center;
-        text-align: center;
     }`;
 }
 
