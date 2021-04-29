@@ -46,8 +46,8 @@ function getCss(fontSize: string) {
 
     body.cross {
         background-color: #ffffff;
-        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#dbdbdb 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #dbdbdb 3.2px, #ffffff 3.2px) -1.6px 0;
-        background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
+        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#dbdbdb 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #dbdbdb 2px, #ffffff 2px) -1px 0;
+        background-size: 100px 100px, 50px 50px, 25px 25px, 25px 25px;
     }
 
     body.polka {
