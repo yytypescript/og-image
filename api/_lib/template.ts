@@ -37,13 +37,24 @@ function getCss(fontSize: string) {
       }
 
     body {
-        background: white;
-        background-size: 100px 100px;
         height: 100vh;
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
+    }
+
+    body.cross {
+        background-color: #ffffff;
+        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#dbdbdb 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #dbdbdb 3.2px, #ffffff 3.2px) -1.6px 0;
+        background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
+    }
+
+    body.polka {
+        background-color: #ffffff;
+        background-image:  radial-gradient(#dbdbdb 0.8px, transparent 0.8px), radial-gradient(#dbdbdb 0.8px, #ffffff 0.8px);
+        background-size: 32px 32px;
+        background-position: 0 0,16px 16px;
     }
 
     strong {
@@ -89,27 +100,6 @@ function getCss(fontSize: string) {
         margin: 0 .05em 0 .1em;
         vertical-align: -0.1em;
     }
-
-    .pattern-cross {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-
-        background-color: #ffffff;
-        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#dbdbdb 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #dbdbdb 3.2px, #ffffff 3.2px) -1.6px 0;
-        background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
-    }
-
-    .pattern-polka {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        
-        background-color: #ffffff;
-        background-image:  radial-gradient(#dbdbdb 0.8px, transparent 0.8px), radial-gradient(#dbdbdb 0.8px, #ffffff 0.8px);
-        background-size: 32px 32px;
-        background-position: 0 0,16px 16px;
-    }
     
     .heading {
         font-family: 'M PLUS 1p', 'Inter', sans-serif;
@@ -130,10 +120,8 @@ export function getHtml(parsedReq: ParsedRequest) {
     <style>
         ${getCss(fontSize)}
     </style>
-    <body>
+    <body class="${pattern}">
         <div>
-            <div class="pattern-${pattern}"></div>
-            <div class="spacer">
             <div class="heading">${emojify(
                 md ? marked(text) : sanitizeHtml(text)
             )}
