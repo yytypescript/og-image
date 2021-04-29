@@ -56,6 +56,10 @@ function getCss(theme: string, fontSize: string) {
         justify-content: center;
     }
 
+    strong {
+        color: #8340BB;
+    }
+
     code {
         color: #D400FF;
         font-family: 'Vera';
