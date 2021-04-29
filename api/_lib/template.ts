@@ -55,7 +55,7 @@ function getCss(fontSize: string) {
         background-color: #ffffff;
         background-image:  radial-gradient(#dbdbdb 4px, transparent 2px), radial-gradient(#dbdbdb 4px, #ffffff 2px);
         background-size: 100px 100px;
-        background-position: 0 -25px,50px 25px;
+        background-position: 0 -35px,50px 15px;
     }
 
     strong {
