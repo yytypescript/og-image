@@ -159,10 +159,10 @@ const App = (_: any, state: AppState, setState: SetState) => {
     };
     const {
         fileType = 'png',
-        fontSize = '100px',
+        fontSize = '75px',
         pattern = 'cross',
         md = true,
-        text = '**Hello** World',
+        text = '**Hello** World😀',
         showToast = false,
         messageToast = '',
         loading = true,
