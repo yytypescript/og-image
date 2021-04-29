@@ -103,7 +103,7 @@ function getCss(fontSize: string) {
     }
     
     .heading {
-        font-family: 'M PLUS 1p', 'Inter', sans-serif;
+        font-family: YakuHanJPs, 'M PLUS 1p', 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: black;
