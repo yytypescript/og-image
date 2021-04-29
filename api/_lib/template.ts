@@ -14,6 +14,7 @@ const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('ba
 function getCss(fontSize: string) {
     return `
     @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+    @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp_s.min.css');
     
     @font-face {
         font-family: 'Inter';
@@ -52,9 +53,9 @@ function getCss(fontSize: string) {
 
     body.polka {
         background-color: #ffffff;
-        background-image:  radial-gradient(#dbdbdb 0.8px, transparent 0.8px), radial-gradient(#dbdbdb 0.8px, #ffffff 0.8px);
-        background-size: 32px 32px;
-        background-position: 0 0,16px 16px;
+        background-image:  radial-gradient(#dbdbdb 4px, transparent 2px), radial-gradient(#dbdbdb 4px, #ffffff 2px);
+        background-size: 100px 100px;
+        background-position: 0 -25px,50px 25px;
     }
 
     strong {
