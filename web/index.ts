@@ -1,4 +1,4 @@
-import { ParsedRequest, Theme, FileType } from '../api/_lib/types';
+import { ParsedRequest, Pattern, FileType } from '../api/_lib/types';
 const { H, R, copee } = (window as any);
 let timeout = -1;
 
@@ -111,9 +111,9 @@ const Toast = ({ show, message }: ToastProps) => {
     );
 }
 
-const themeOptions: DropdownOption[] = [
-    { text: 'Light', value: 'light' },
-    { text: 'Dark', value: 'dark' },
+const patternOptions: DropdownOption[] = [
+    { text: 'Cross', value: 'cross' },
+    { text: 'Polka', value: 'polka' },
 ];
 
 const fileTypeOptions: DropdownOption[] = [
@@ -159,11 +159,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const {
         fileType = 'png',
         fontSize = '100px',
-        theme = 'light',
+        pattern = 'cross',
         md = true,
         text = '**Hello** World',
-        widths=[],
-        heights=[],
         showToast = false,
         messageToast = '',
         loading = true,
@@ -172,15 +170,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const mdValue = md ? '1' : '0';
     const url = new URL(window.location.origin);
     url.pathname = `${encodeURIComponent(text)}.${fileType}`;
-    url.searchParams.append('theme', theme);
+    url.searchParams.append('pattern', pattern);
     url.searchParams.append('md', mdValue);
     url.searchParams.append('fontSize', fontSize);
-    for (let width of widths) {
-        url.searchParams.append('widths', width);
-    }
-    for (let height of heights) {
-        url.searchParams.append('heights', height);
-    }
 
     return H('div',
         { className: 'split' },
@@ -188,11 +180,11 @@ const App = (_: any, state: AppState, setState: SetState) => {
             { className: 'pull-left' },
             H('div',
                 H(Field, {
-                    label: 'Theme',
+                    label: 'Pattern',
                     input: H(Dropdown, {
-                        options: themeOptions,
-                        value: theme,
-                        onchange: (val: Theme) => setLoadingState({ theme: val })
+                        options: patternOptions,
+                        value: pattern,
+                        onchange: (val: Pattern) => setLoadingState({ pattern: val })
                     })
                 }),
                 H(Field, {

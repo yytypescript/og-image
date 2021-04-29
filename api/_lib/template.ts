@@ -11,16 +11,7 @@ const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString
 const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 
-function getCss(theme: string, fontSize: string) {
-    let background = 'white';
-    let foreground = 'black';
-    let radial = 'lightgray';
-
-    if (theme === 'dark') {
-        background = 'black';
-        foreground = 'white';
-        radial = 'dimgray';
-    }
+function getCss(fontSize: string) {
     return `
     @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
     
@@ -46,8 +37,7 @@ function getCss(theme: string, fontSize: string) {
       }
 
     body {
-        background: ${background};
-        background-image: radial-gradient(circle at 25px 25px, ${radial} 2%, transparent 0%), radial-gradient(circle at 75px 75px, ${radial} 2%, transparent 0%);
+        background: white;
         background-size: 100px 100px;
         height: 100vh;
         display: flex;
@@ -99,28 +89,50 @@ function getCss(theme: string, fontSize: string) {
         margin: 0 .05em 0 .1em;
         vertical-align: -0.1em;
     }
+
+    .pattern-cross {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+
+        background-color: #ffffff;
+        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#dbdbdb 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #dbdbdb 3.2px, #ffffff 3.2px) -1.6px 0;
+        background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
+    }
+
+    .pattern-polka {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        
+        background-color: #ffffff;
+        background-image:  radial-gradient(#dbdbdb 0.8px, transparent 0.8px), radial-gradient(#dbdbdb 0.8px, #ffffff 0.8px);
+        background-size: 32px 32px;
+        background-position: 0 0,16px 16px;
+    }
     
     .heading {
         font-family: 'M PLUS 1p', 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
-        color: ${foreground};
+        color: black;
         line-height: 1.8;
     }`;
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, theme, md, fontSize } = parsedReq;
+    const { text, pattern, md, fontSize } = parsedReq;
     return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        ${getCss(theme, fontSize)}
+        ${getCss(fontSize)}
     </style>
     <body>
         <div>
+            <div class="pattern-${pattern}"></div>
             <div class="spacer">
             <div class="heading">${emojify(
                 md ? marked(text) : sanitizeHtml(text)
