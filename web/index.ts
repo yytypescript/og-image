@@ -162,7 +162,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         fontSize = '75px',
         pattern = 'cross',
         md = true,
-        text = '**Hello** World😎',
+        text = '**Hello** World🥳',
         showToast = false,
         messageToast = '',
         loading = true,
