@@ -162,7 +162,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         fontSize = '75px',
         pattern = 'cross',
         md = true,
-        text = '**Hello** World!%F0%9F%8C%8F',
+        text = '**OGP画像**自動生成つ～る',
         showToast = false,
         messageToast = '',
         loading = true,
