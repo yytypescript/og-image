@@ -112,6 +112,10 @@ function getCss(fontSize: string) {
         position: absolute;
         width: 1200px;
         height: 630px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
         margin:  auto;
     }
 
@@ -164,6 +168,10 @@ export function getHtml(parsedReq: ParsedRequest) {
     </style>
     <body class="${pattern}">
         <div>
+            <img
+                class="overlay"
+                src="https://og-image.eyemono.moe/OGP_overlay.png"
+            />
             <div class="heading">${emojify(
                 md ? marked(text) : sanitizeHtml(text)
             )}
