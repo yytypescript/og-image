@@ -68,7 +68,7 @@ function getCss(fontSize: string, overlay: string) {
 
     code {
         color: #D400FF;
-        font-family: 'Vera';
+        font-family: 'Vera', monospace;
         white-space: pre-wrap;
         letter-spacing: -5px;
     }
