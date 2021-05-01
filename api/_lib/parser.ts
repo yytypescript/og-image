@@ -36,7 +36,7 @@ export function parseRequest(req: IncomingMessage) {
         pattern: ['none', 'cross', 'polka'].includes(pattern || 'cross') ? pattern as Pattern : 'cross',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
-        overlay: decodeURIComponent(overlay || encodeURIComponent('https://og-image.eyemono.moe/OGP_overlay.png'))
+        overlay: decodeURIComponent(overlay || '')
     };
     return parsedRequest;
 }
