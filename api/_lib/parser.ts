@@ -5,7 +5,7 @@ import { Pattern, ParsedRequest } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { fontSize, pattern, md } = (query || {});
+    const { fontSize, pattern, md, overlay } = (query || {});
 
     if (Array.isArray(fontSize)) {
         throw new Error('Expected a single fontSize');
@@ -13,6 +13,10 @@ export function parseRequest(req: IncomingMessage) {
     if (Array.isArray(pattern)) {
         throw new Error('Expected a single pattern');
     }
+    if (Array.isArray(overlay)) {
+        throw new Error('Expected a single overlay');
+    }
+    
     
     const arr = (pathname || '/').slice(1).split('.');
     let extension = '';
@@ -32,6 +36,7 @@ export function parseRequest(req: IncomingMessage) {
         pattern: ['none', 'cross', 'polka'].includes(pattern || 'cross') ? pattern as Pattern : 'cross',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
+        overlay: decodeURIComponent(overlay || encodeURIComponent('https://og-image.eyemono.moe/OGP_overlay.png'))
     };
     return parsedRequest;
 }

@@ -163,6 +163,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         pattern = 'cross',
         md = true,
         text = '**OGP画像**自動生成つ～る',
+        overlay = 'https://og-image.eyemono.moe/OGP_overlay.png',
         showToast = false,
         messageToast = '',
         loading = true,
@@ -174,6 +175,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.searchParams.append('pattern', pattern);
     url.searchParams.append('md', mdValue);
     url.searchParams.append('fontSize', fontSize);
+    if (overlay) {
+        url.searchParams.append('overlay', overlay)
+    }
 
     return H('div',
         { className: 'split' },
@@ -219,6 +223,16 @@ const App = (_: any, state: AppState, setState: SetState) => {
                         oninput: (val: string) => {
                             console.log('oninput ' + val);
                             setLoadingState({ text: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Overlay Image',
+                    input: H(TextInput, {
+                        value: overlay,
+                        oninput: (val: string) => {
+                            console.log('oninput ' + val);
+                            setLoadingState({ overlay: val, overrideUrl: url });
                         }
                     })
                 }),

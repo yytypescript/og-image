@@ -7,4 +7,5 @@ export interface ParsedRequest {
     pattern: Pattern;
     md: boolean;
     fontSize: string;
+    overlay?: string;
 }
