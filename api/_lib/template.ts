@@ -80,6 +80,22 @@ function getCss(fontSize: string, overlay: string) {
     li {
         text-align: left;
     }
+    
+    blockquote {
+        color: #6a737d;
+        padding: 0 12px;
+    }
+    
+    blockquote:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: .25em;
+        height: 100%;
+        background: #dfe2e5;
+    }
 
     .logo-wrapper {
         display: flex;
