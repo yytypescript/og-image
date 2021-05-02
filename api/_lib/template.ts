@@ -149,6 +149,7 @@ function getCss(fontSize: string, overlay: string) {
         line-height: 1.4;
         position: absolute;
         display: flex;
+        flex-direction: column;
         width: 938px;
         height: 600px;
         top: 0;
