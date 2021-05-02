@@ -77,6 +77,10 @@ function getCss(fontSize: string, overlay: string) {
         content: '\`';
     }
 
+    li {
+        text-align: left;
+    }
+
     .logo-wrapper {
         display: flex;
         align-items: center;
