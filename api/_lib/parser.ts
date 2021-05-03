@@ -42,8 +42,8 @@ export function parseRequest(req: IncomingMessage) {
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
         overlay: decodeURIComponent(overlay || ''),
-        textColor: decodeURIComponent(textColor || '#000000'),
-        textStrongColor: decodeURIComponent(textStrongColor || '#8340BB')
+        textColor: textColor || '#000000',
+        textStrongColor: textStrongColor || '#8340BB'
     };
     return parsedRequest;
 }
