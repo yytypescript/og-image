@@ -120,7 +120,7 @@ function getCss(fontSize: string, overlay: string, textColor: string, textStrong
 
     .overlay {
         ${overlay ? `
-        background-image: url('${overlay}');
+        background-image: url('${sanitizeHtml(overlay)}');
         background-position: center;
         background-size: cover;
         ` : ''}
