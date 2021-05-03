@@ -62,6 +62,10 @@ function getCss(fontSize: string, overlay: string) {
         background-position: 0 -35px,50px 15px;
     }
 
+    h1,h2,h3,h4,h5,h6,p {
+        margin: 0;
+    }
+
     strong {
         color: #8340BB;
     }
