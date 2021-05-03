@@ -67,14 +67,12 @@ function getCss(fontSize: string, overlay: string) {
     }
 
     code {
-        color: #D400FF;
-        font-family: 'Vera', monospace;
+        color: #fff;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
         white-space: pre-wrap;
-        letter-spacing: -5px;
-    }
-
-    code:before, code:after {
-        content: '\`';
+        background-color: #282828;
+        border-radius: 8px;
+        font-size: 0.8em;
     }
 
     li {
