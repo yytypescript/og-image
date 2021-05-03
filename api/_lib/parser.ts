@@ -5,7 +5,7 @@ import { Pattern, ParsedRequest } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { fontSize, pattern, md, overlay } = (query || {});
+    const { fontSize, pattern, md, overlay, textColor, textStrongColor } = (query || {});
 
     if (Array.isArray(fontSize)) {
         throw new Error('Expected a single fontSize');
@@ -16,7 +16,12 @@ export function parseRequest(req: IncomingMessage) {
     if (Array.isArray(overlay)) {
         throw new Error('Expected a single overlay');
     }
-    
+    if (Array.isArray(textColor)) {
+        throw new Error('Expected a single textColor');
+    }
+    if (Array.isArray(textStrongColor)) {
+        throw new Error('Expected a single textStrongColor');
+    }
     
     const arr = (pathname || '/').slice(1).split('.');
     let extension = '';
@@ -36,7 +41,9 @@ export function parseRequest(req: IncomingMessage) {
         pattern: ['none', 'cross', 'polka'].includes(pattern || 'cross') ? pattern as Pattern : 'cross',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
-        overlay: decodeURIComponent(overlay || '')
+        overlay: decodeURIComponent(overlay || ''),
+        textColor: decodeURIComponent(textColor || '#000000'),
+        textStrongColor: decodeURIComponent(textStrongColor || '#8340BB')
     };
     return parsedRequest;
 }

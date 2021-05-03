@@ -91,6 +91,23 @@ const Textarea = ({ value, oninput }: TextareaProps) => {
     );
 }
 
+interface ColorInputProps {
+    value: string;
+    oninput: (val: string) => void;
+}
+
+const ColorInput = ({ value, oninput }: ColorInputProps) => {
+    return H('div',
+        { className: 'color-outer-wrapper' },
+        H('div',
+            { className: 'color-inner-wrapper' },
+            H('input',
+                { type: 'color', value, oninput: (e: any) => oninput(e.target.value) }
+            )
+        )
+    );
+}
+
 interface FieldProps {
     label: string;
     input: any;
@@ -181,6 +198,8 @@ const App = (_: any, state: AppState, setState: SetState) => {
         md = true,
         text = '**OGP画像**自動生成つ～る',
         overlay = 'https://og-image.eyemono.moe/OGP_overlay.png',
+        textColor = '#000000',
+        textStrongColor = '#8340BB',
         showToast = false,
         messageToast = '',
         loading = true,
@@ -238,7 +257,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
                     input: H(Textarea, {
                         value: text,
                         oninput: (val: string) => {
-                            console.log('oninput ' + val);
                             setLoadingState({ text: val, overrideUrl: url });
                         }
                     })
@@ -248,8 +266,25 @@ const App = (_: any, state: AppState, setState: SetState) => {
                     input: H(TextInput, {
                         value: overlay,
                         oninput: (val: string) => {
-                            console.log('oninput ' + val);
                             setLoadingState({ overlay: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Text Color',
+                    input: H(ColorInput, {
+                        value: textColor,
+                        oninput: (val: string) => {
+                            setLoadingState({ textColor: val, overrideUrl: url });
+                        }
+                    })
+                }),
+                H(Field, {
+                    label: 'Highlighted Text Color',
+                    input: H(ColorInput, {
+                        value: textStrongColor,
+                        oninput: (val: string) => {
+                            setLoadingState({ textStrongColor: val, overrideUrl: url });
                         }
                     })
                 }),
