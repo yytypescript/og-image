@@ -11,7 +11,7 @@ const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString
 const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
 
-function getCss(fontSize: string, overlay: string, textColor: string, textStrongColor: string) {
+function getCss(fontSize: string, textColor: string, textStrongColor: string) {
     return `
     @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
     @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp_s.min.css');
@@ -119,11 +119,6 @@ function getCss(fontSize: string, overlay: string, textColor: string, textStrong
     }
 
     .overlay {
-        ${overlay ? `
-        background-image: url('${(overlay)}');
-        background-position: center;
-        background-size: cover;
-        ` : ''}
         display: block;
         position: absolute;
         width: 1200px;
@@ -187,7 +182,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     <title>Generated Image</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        ${getCss(fontSize, (overlay || ''), textColor, textStrongColor)}
+        ${getCss(fontSize, textColor, textStrongColor)}
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -199,7 +194,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     </script>
     <body class="${pattern}">
         <div>
-            <div class="overlay">
+            ${overlay ? `<img class="overlay" src="${sanitizeHtml(overlay)}">` :""}
             <div class="heading">${emojify(
         md ? marked(text) : sanitizeHtml(text)
     )}
