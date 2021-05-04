@@ -120,6 +120,7 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
 
     .overlay {
         display: block;
+        object-fit: cover;
         position: absolute;
         width: 1200px;
         height: 630px;
