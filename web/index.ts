@@ -213,9 +213,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.searchParams.append('fontSize', fontSize);
     url.searchParams.append('textColor', textColor);
     url.searchParams.append('textStrongColor', textStrongColor);
-    if (overlay) {
-        url.searchParams.append('overlay', overlay)
-    }
+    url.searchParams.append('overlay', overlay)
 
     return H('div',
         { className: 'split' },
