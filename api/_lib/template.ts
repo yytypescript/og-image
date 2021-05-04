@@ -174,7 +174,7 @@ function getCss(fontSize: string, overlay: string, textColor: string, textStrong
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, pattern, md, fontSize, overlay, textColor, textStrongColor } = parsedReq;
+    const { text, pattern, md, fontSize, textColor, textStrongColor, overlay } = parsedReq;
     return `<!DOCTYPE html>
 <html>
     <head>

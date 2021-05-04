@@ -5,7 +5,7 @@ import { Pattern, ParsedRequest } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { fontSize, pattern, md, overlay, textColor, textStrongColor } = (query || {});
+    const { fontSize, pattern, md, textColor, textStrongColor, overlay } = (query || {});
 
     if (Array.isArray(fontSize)) {
         throw new Error('Expected a single fontSize');
@@ -41,9 +41,9 @@ export function parseRequest(req: IncomingMessage) {
         pattern: ['none', 'cross', 'polka'].includes(pattern || 'cross') ? pattern as Pattern : 'cross',
         md: md === '1' || md === 'true',
         fontSize: fontSize || '96px',
-        overlay: decodeURIComponent(overlay || ''),
         textColor: decodeURIComponent(textColor || '#000000'),
-        textStrongColor: decodeURIComponent(textStrongColor || '#8340BB')
+        textStrongColor: decodeURIComponent(textStrongColor || '#8340BB'),
+        overlay: decodeURIComponent(overlay || '')
     };
     return parsedRequest;
 }
