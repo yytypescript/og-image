@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import marked from "marked";
+import mikan from "mikanjs";
 import { sanitizeHtml } from "./sanitizer";
 import { ParsedRequest } from "./types";
 const twemoji = require("twemoji");
@@ -161,7 +162,8 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
         line-height: 1.4;
         position: absolute;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         width: 938px;
         height: 600px;
         top: 0;
@@ -171,6 +173,7 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
         margin: auto;
         justify-content: center;
         align-items: center;
+        align-content: center;
     }`;
 }
 
@@ -206,11 +209,19 @@ export function getHtml(parsedReq: ParsedRequest) {
                 ? `<img class="overlay" src="${sanitizeHtml(overlay)}">`
                 : ""
             }
-            <div class="heading">${emojify(
-              md ? marked(text) : sanitizeHtml(text)
-            )}
-            </div>
+            <div class="heading">${
+              md ? emojify(marked(text)) : splitText(text)
+            }</div>
         </div>
     </body>
 </html>`;
+}
+
+function splitText(text: string): string {
+  let texts: string[] = mikan.split(text);
+  texts = texts
+    .map(sanitizeHtml)
+    .map((text) => text.replace(/ /g, "&nbsp;"))
+    .map((text) => `<span style="display: inline-block">${text}</span>`);
+  return texts.join("");
 }
