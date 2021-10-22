@@ -158,6 +158,7 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
         font-family: YakuHanJPs, 'M PLUS 1p', 'Inter', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
+        font-weight: bold;
         color: ${sanitizeHtml(textColor)};
         line-height: 1.4;
         position: absolute;
