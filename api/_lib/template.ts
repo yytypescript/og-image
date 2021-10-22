@@ -1,18 +1,23 @@
-
-import { readFileSync } from 'fs';
-import marked from 'marked';
-import { sanitizeHtml } from './sanitizer';
-import { ParsedRequest } from './types';
-const twemoji = require('twemoji');
-const twOptions = { folder: 'svg', ext: '.svg' };
+import { readFileSync } from "fs";
+import marked from "marked";
+import { sanitizeHtml } from "./sanitizer";
+import { ParsedRequest } from "./types";
+const twemoji = require("twemoji");
+const twOptions = { folder: "svg", ext: ".svg" };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const rglr = readFileSync(
+  `${__dirname}/../_fonts/Inter-Regular.woff2`
+).toString("base64");
+const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
+  "base64"
+);
+const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
+  "base64"
+);
 
 function getCss(fontSize: string, textColor: string, textStrongColor: string) {
-    return `
+  return `
     @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
     @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp_s.min.css');
     
@@ -170,8 +175,9 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, pattern, md, fontSize, textColor, textStrongColor, overlay } = parsedReq;
-    return `<!DOCTYPE html>
+  const { text, pattern, md, fontSize, textColor, textStrongColor, overlay } =
+    parsedReq;
+  return `<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.css" integrity="sha384-ThssJ7YtjywV52Gj4JE/1SQEDoMEckXyhkFVwaf4nDSm5OBlXeedVYjuuUd0Yua+" crossorigin="anonymous">
@@ -195,13 +201,16 @@ export function getHtml(parsedReq: ParsedRequest) {
     </script>
     <body class="${pattern}">
         <div>
-            ${overlay ? `<img class="overlay" src="${sanitizeHtml(overlay)}">` :""}
+            ${
+              overlay
+                ? `<img class="overlay" src="${sanitizeHtml(overlay)}">`
+                : ""
+            }
             <div class="heading">${emojify(
-        md ? marked(text) : sanitizeHtml(text)
-    )}
+              md ? marked(text) : sanitizeHtml(text)
+            )}
             </div>
         </div>
     </body>
 </html>`;
 }
-
