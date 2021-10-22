@@ -56,14 +56,14 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
     }
 
     body.cross {
-        background-color: #ffffff;
-        background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#dbdbdb 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #dbdbdb 2px, #ffffff 2px) -1px 0;
+        background-color: #3178c6;
+        background: radial-gradient(circle, transparent 20%, #3178c6 20%, #3178c6 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #3178c6 20%, #3178c6 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#5D8FC5 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #5D8FC5 2px, #3178c6 2px) -1px 0;
         background-size: 100px 100px, 50px 50px, 25px 25px, 25px 25px;
     }
 
     body.polka {
-        background-color: #ffffff;
-        background-image:  radial-gradient(#dbdbdb 4px, transparent 2px), radial-gradient(#dbdbdb 4px, #ffffff 2px);
+        background-color: #3178c6;
+        background-image:  radial-gradient(#5D8FC5 4px, transparent 2px), radial-gradient(#5D8FC5 4px, #3178c6 2px);
         background-size: 100px 100px;
         background-position: 0 -35px,50px 15px;
     }
