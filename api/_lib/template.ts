@@ -52,7 +52,7 @@ function getCss(fontSize: string, textColor: string, textStrongColor: string) {
     }
 
     body.none {
-        background-color: #ffffff;
+        background-color: #3178c6;
     }
 
     body.cross {
